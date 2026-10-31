@@ -62,8 +62,8 @@ export default function DashboardPage() {
         };
       case 'chatbot':
         return {
-          title: 'AI Admissions Chatbot & Live Simulator',
-          desc: 'Virtual parent inquiries, resolution telemetry, and test simulator',
+          title: 'AI Admissions Chatbot Telemetry',
+          desc: 'Automated parent inquiries, topic intent classification, and resolution audit',
           icon: MessageSquare,
           color: 'text-emerald-600',
         };

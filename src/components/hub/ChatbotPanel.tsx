@@ -106,13 +106,13 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
       {/* Card Footer with Call to Action */}
       <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
         <span className="text-xs text-slate-500">
-          Interactive simulator ready on live tab &bull; CSAT 4.86 / 5.0
+          91.4% automated resolution rate &bull; CSAT 4.86 / 5.0
         </span>
         <button
           onClick={() => onNavigate('chatbot')}
           className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center space-x-1"
         >
-          <span>Test Live Simulator</span>
+          <span>Explore Chatbot Telemetry</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>

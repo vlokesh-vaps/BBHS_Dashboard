@@ -109,81 +109,59 @@ export default function ChatbotTab() {
         </div>
       </div>
 
-      {/* Two Column Section: Live Interactive Simulator & Intent Breakdown */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column (5 Cols): Live Interactive Chatbot Simulator */}
-        <div className="lg:col-span-5">
-          <LiveChatbotSimulator />
-        </div>
-
-        {/* Right Column (7 Cols): Intent Breakdown & Hourly Traffic */}
-        <div className="lg:col-span-7 space-y-6">
-          {/* Intent Distribution */}
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      {/* Two Column Analytics Grid: Intent Breakdown & Hourly Inquiry Volume */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Intent Distribution with Donut Chart */}
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div>
                 <h3 className="text-base font-bold text-slate-900">
                   Parent Inquiries by Intent Category
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Topic breakdown across all automated chatbot interactions
+                  Topic classification across {bbhsChatbotData.kpis.totalConversations.toLocaleString()} total conversations
                 </p>
               </div>
               <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                AI Intent Classifier
+                Intent Breakdown
               </span>
             </div>
 
-            <div className="mt-4 space-y-3">
-              {bbhsChatbotData.intentBreakdown.map((item) => (
-                <div key={item.intent} className="space-y-1">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-slate-800 flex items-center space-x-1.5">
-                      <span
-                        className="w-2.5 h-2.5 rounded-full"
-                        style={{ backgroundColor: item.color }}
-                      />
-                      <span>{item.intent}</span>
-                    </span>
-                    <div className="text-right">
-                      <span className="font-bold text-slate-900">{item.percentage}%</span>
-                      <span className="text-[11px] text-slate-400 ml-1.5">
-                        ({item.count.toLocaleString()} queries)
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${item.percentage}%`,
-                        backgroundColor: item.color,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className="mt-5">
+              <DonutChart
+                data={intentPieData}
+                size={130}
+                strokeWidth={22}
+                centerValue="91.4%"
+                centerLabel="Resolved"
+              />
             </div>
           </div>
 
-          {/* Hourly Chat Volume */}
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="mt-5 pt-3 border-t border-slate-100 text-xs text-slate-500">
+            Admissions &amp; Tuition Fee queries constitute <span className="font-bold text-slate-800">62.7%</span> of all inquiries.
+          </div>
+        </div>
+
+        {/* Hourly Inquiry Traffic Volume */}
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div>
-                <h3 className="text-sm font-bold text-slate-900">
+                <h3 className="text-base font-bold text-slate-900">
                   Hourly Inquiry Traffic Pattern
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Peak chatbot usage times by parents (Evening surge between 7 PM - 10 PM)
+                  24-hour parent traffic load (Peak evening surge between 7 PM - 10 PM)
                 </p>
               </div>
-              <span className="text-xs text-amber-600 font-semibold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                24/7 AI Availability
+              <span className="text-xs text-amber-700 font-semibold bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                24/7 Availability
               </span>
             </div>
 
-            <div className="mt-4 h-36 flex items-end space-x-2 sm:space-x-4 pb-2">
+            <div className="mt-6 h-40 flex items-end space-x-2 sm:space-x-4 pb-2">
               {bbhsChatbotData.hourlyActivity.map((h, i) => {
                 const maxHour = 2200;
                 const heightPct = Math.round((h.chats / maxHour) * 100);
@@ -204,6 +182,11 @@ export default function ChatbotTab() {
                 );
               })}
             </div>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Average response latency: <span className="font-bold text-emerald-600">1.2 seconds</span></span>
+            <span className="text-slate-400">Peak hour: 9:00 PM (2,100 inquiries)</span>
           </div>
         </div>
       </div>
