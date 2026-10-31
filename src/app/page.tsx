@@ -8,7 +8,6 @@ import AnalyticsTab from '../components/AnalyticsTab';
 import SocialMediaTab from '../components/SocialMediaTab';
 import LeadsTab from '../components/LeadsTab';
 import ChatbotTab from '../components/ChatbotTab';
-import PresentationMode from '../components/presentation/PresentationMode';
 import { bbhsSchoolProfile } from '../data/bbhsData';
 import {
   ExternalLink,
@@ -26,7 +25,6 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<string>('hub');
   const [timeRange, setTimeRange] = useState<string>('Last 30 Days');
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
-  const [isPresentationOpen, setIsPresentationOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const handleRefresh = () => {
@@ -94,13 +92,6 @@ export default function DashboardPage() {
         setTimeRange={setTimeRange}
         onRefresh={handleRefresh}
         isRefreshing={isRefreshing}
-        onOpenPresentation={() => setIsPresentationOpen(true)}
-      />
-
-      {/* Production Presentation Mode Overlay */}
-      <PresentationMode
-        isOpen={isPresentationOpen}
-        onClose={() => setIsPresentationOpen(false)}
       />
 
       {/* Main Content Area */}

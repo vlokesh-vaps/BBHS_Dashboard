@@ -5,7 +5,6 @@ import React from 'react';
 import {
   Calendar,
   RefreshCw,
-  Tv,
 } from 'lucide-react';
 import { bbhsSchoolProfile } from '../data/bbhsData';
 
@@ -16,7 +15,6 @@ interface HeaderProps {
   setTimeRange: (range: string) => void;
   onRefresh: () => void;
   isRefreshing: boolean;
-  onOpenPresentation?: () => void;
 }
 
 export default function Header({
@@ -26,7 +24,6 @@ export default function Header({
   setTimeRange,
   onRefresh,
   isRefreshing,
-  onOpenPresentation,
 }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 bg-[#0B192C] text-white shadow-lg border-b border-slate-800">
@@ -97,18 +94,6 @@ export default function Header({
             >
               <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin text-amber-400' : ''}`} />
             </button>
-
-            {/* Production Presentation View Button */}
-            {onOpenPresentation && (
-              <button
-                onClick={onOpenPresentation}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-md transition-all transform hover:scale-105"
-                title="Launch Production Presentation View"
-              >
-                <Tv className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Presentation View</span>
-              </button>
-            )}
           </div>
         </div>
       </div>

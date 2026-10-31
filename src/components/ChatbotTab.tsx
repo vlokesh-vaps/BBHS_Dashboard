@@ -15,14 +15,20 @@ import {
   HelpCircle,
   Search,
   Filter,
-  Sparkles,
 } from 'lucide-react';
 import { bbhsChatbotData } from '../data/bbhsData';
-import LiveChatbotSimulator from './LiveChatbotSimulator';
+import DonutChart from './charts/DonutChart';
 
 export default function ChatbotTab() {
   const [logSearch, setLogSearch] = useState('');
   const [intentFilter, setIntentFilter] = useState('all');
+
+  const intentPieData = bbhsChatbotData.intentBreakdown.map((i) => ({
+    label: i.intent.split(' ')[0],
+    percentage: i.percentage,
+    color: i.color,
+    value: `${i.count.toLocaleString()} queries`,
+  }));
 
   const filteredLogs = bbhsChatbotData.recentLogs.filter((log) => {
     const matchesSearch =
