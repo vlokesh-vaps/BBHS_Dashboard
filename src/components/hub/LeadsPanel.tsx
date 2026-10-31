@@ -4,6 +4,7 @@
 import React from 'react';
 import { UserCheck, PieChart as PieChartIcon, ChevronRight, ArrowRight, Globe, MessageCircle, Bot } from 'lucide-react';
 import { bbhsLeadsData } from '../../data/bbhsData';
+import { formatNumber } from '../../utils/format';
 import DonutChart from '../charts/DonutChart';
 
 interface LeadsPanelProps {
@@ -115,7 +116,7 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
             <div key={s.stage} className="space-y-0.5">
               <div className="flex items-center justify-between text-[11px]">
                 <span className="font-medium text-slate-600">{s.stage}</span>
-                <span className="font-bold text-slate-900">{s.count.toLocaleString()}</span>
+                <span className="font-bold text-slate-900">{formatNumber(s.count)}</span>
               </div>
               <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                 <div

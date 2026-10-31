@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { formatNumber } from '../../utils/format';
 
 export interface TrafficDataPoint {
   date: string;
@@ -41,8 +42,8 @@ export default function TrafficAreaChart({
       {activePoint && (
         <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[11px] px-2.5 py-1 rounded shadow-md z-10 pointer-events-none flex items-center space-x-2 whitespace-nowrap">
           <span className="font-bold text-amber-300">{activePoint.date}</span>
-          <span>{activePoint.pageViews.toLocaleString()} views</span>
-          <span className="text-slate-400">({activePoint.sessions.toLocaleString()} sessions)</span>
+          <span>{formatNumber(activePoint.pageViews)} views</span>
+          <span className="text-slate-400">({formatNumber(activePoint.sessions)} sessions)</span>
         </div>
       )}
 

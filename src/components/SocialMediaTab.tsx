@@ -21,6 +21,7 @@ import {
   Users,
 } from 'lucide-react';
 import { bbhsSocialMediaData } from '../data/bbhsData';
+import { formatNumber } from '../utils/format';
 
 export default function SocialMediaTab() {
   const [platformFilter, setPlatformFilter] = useState<string>('all');
@@ -52,7 +53,7 @@ export default function SocialMediaTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">Total Followers</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsSocialMediaData.kpis.totalFollowers.toLocaleString()}
+            {formatNumber(bbhsSocialMediaData.kpis.totalFollowers)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
@@ -83,7 +84,7 @@ export default function SocialMediaTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">Video &amp; Reel Plays</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsSocialMediaData.kpis.totalVideoViews.toLocaleString()}
+            {formatNumber(bbhsSocialMediaData.kpis.totalVideoViews)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold">
             +32% video consumption
@@ -145,7 +146,7 @@ export default function SocialMediaTab() {
 
                 <div className="mt-4">
                   <div className="text-2xl font-black text-slate-900">
-                    {plat.followers.toLocaleString()}
+                    {formatNumber(plat.followers)}
                   </div>
                   <div className="mt-1 flex items-center space-x-1.5 text-xs text-emerald-600 font-semibold">
                     <TrendingUp className="w-3.5 h-3.5" />
@@ -305,11 +306,10 @@ export default function SocialMediaTab() {
               <button
                 key={plat}
                 onClick={() => setPlatformFilter(plat)}
-                className={`px-2.5 py-1 rounded font-medium capitalize transition-all ${
-                  platformFilter === plat
+                className={`px-2.5 py-1 rounded font-medium capitalize transition-all ${platformFilter === plat
                     ? 'bg-slate-900 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 {plat}
               </button>
@@ -350,7 +350,7 @@ export default function SocialMediaTab() {
                   <div className="flex items-center space-x-3">
                     <span className="flex items-center space-x-1" title="Likes">
                       <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500/20" />
-                      <span className="font-semibold">{post.likes.toLocaleString()}</span>
+                      <span className="font-semibold">{formatNumber(post.likes)}</span>
                     </span>
                     <span className="flex items-center space-x-1" title="Comments">
                       <MessageCircle className="w-3.5 h-3.5 text-blue-500" />
@@ -368,7 +368,7 @@ export default function SocialMediaTab() {
                 </div>
 
                 <div className="mt-2 text-[11px] text-slate-400 flex items-center justify-between">
-                  <span>Reach: {post.reach.toLocaleString()} views</span>
+                  <span>Reach: {formatNumber(post.reach)} views</span>
                   <span className="text-emerald-600 font-semibold uppercase text-[10px]">
                     {post.status}
                   </span>

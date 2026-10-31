@@ -9,6 +9,7 @@ import {
   bbhsLeadsData,
   bbhsChatbotData,
 } from '../../data/bbhsData';
+import { formatNumber } from '../../utils/format';
 
 interface KpiSummaryRowProps {
   onNavigate: (tabId: string) => void;
@@ -33,7 +34,7 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
           </div>
         </div>
         <div className="mt-2 text-2xl font-black text-slate-900">
-          {bbhsAnalyticsData.kpis.totalUsers.toLocaleString()}
+          {formatNumber(bbhsAnalyticsData.kpis.totalUsers)}
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="text-emerald-600 font-semibold flex items-center">
@@ -58,7 +59,7 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
           </div>
         </div>
         <div className="mt-2 text-2xl font-black text-slate-900">
-          {bbhsSocialMediaData.kpis.totalFollowers.toLocaleString()}
+          {formatNumber(bbhsSocialMediaData.kpis.totalFollowers)}
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="text-emerald-600 font-semibold flex items-center">
@@ -83,7 +84,7 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
           </div>
         </div>
         <div className="mt-2 text-2xl font-black text-slate-900">
-          {bbhsLeadsData.funnelMetrics.totalInquiries.toLocaleString()}
+          {formatNumber(bbhsLeadsData.funnelMetrics.totalInquiries)}
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">

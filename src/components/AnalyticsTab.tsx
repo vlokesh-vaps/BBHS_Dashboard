@@ -19,6 +19,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { bbhsAnalyticsData, bbhsSchoolProfile } from '../data/bbhsData';
+import { formatNumber } from '../utils/format';
 
 export default function AnalyticsTab() {
   const [selectedMetric, setSelectedMetric] = useState<'pageViews' | 'sessions' | 'uniqueUsers'>('pageViews');
@@ -85,7 +86,7 @@ export default function AnalyticsTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">Total Visitors</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsAnalyticsData.kpis.totalUsers.toLocaleString()}
+            {formatNumber(bbhsAnalyticsData.kpis.totalUsers)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
@@ -96,7 +97,7 @@ export default function AnalyticsTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">New Prospective Parents</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsAnalyticsData.kpis.newUsers.toLocaleString()}
+            {formatNumber(bbhsAnalyticsData.kpis.newUsers)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
@@ -107,7 +108,7 @@ export default function AnalyticsTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">Total Site Visits</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsAnalyticsData.kpis.sessions.toLocaleString()}
+            {formatNumber(bbhsAnalyticsData.kpis.sessions)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
@@ -118,7 +119,7 @@ export default function AnalyticsTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">School Pages Read</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsAnalyticsData.kpis.pageViews.toLocaleString()}
+            {formatNumber(bbhsAnalyticsData.kpis.pageViews)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
@@ -206,7 +207,7 @@ export default function AnalyticsTab() {
                   {/* Tooltip on hover */}
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-12 z-20 bg-slate-900 text-white text-[11px] px-2.5 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap">
                     <div className="font-bold">{item.date} ({item.day})</div>
-                    <div>{selectedMetric}: {currentVal.toLocaleString()}</div>
+                    <div>{selectedMetric}: {formatNumber(currentVal)}</div>
                     <div className="text-amber-300">Inquiries: {item.inquiries}</div>
                   </div>
 
@@ -271,7 +272,7 @@ export default function AnalyticsTab() {
                   <div className="text-right">
                     <span className="font-bold text-slate-900">{channel.percentage}%</span>
                     <span className="text-slate-400 text-[11px] ml-1.5">
-                      ({channel.sessions.toLocaleString()} sessions)
+                      ({formatNumber(channel.sessions)} sessions)
                     </span>
                   </div>
                 </div>
@@ -333,7 +334,7 @@ export default function AnalyticsTab() {
                       </div>
                     </td>
                     <td className="py-3 text-right font-bold text-slate-800">
-                      {page.views.toLocaleString()}
+                      {formatNumber(page.views)}
                     </td>
                     <td className="py-3 text-right text-slate-600">
                       {page.avgDuration}
@@ -387,8 +388,8 @@ export default function AnalyticsTab() {
                   </span>
                 </div>
                 <div className="mt-1 flex items-center justify-between text-[11px] text-slate-500">
-                  <span>{kw.clicks.toLocaleString()} clicks</span>
-                  <span>{kw.impressions.toLocaleString()} imp.</span>
+                  <span>{formatNumber(kw.clicks)} clicks</span>
+                  <span>{formatNumber(kw.impressions)} imp.</span>
                   <span className="text-emerald-600 font-semibold">{kw.ctr} CTR</span>
                 </div>
               </div>
@@ -447,7 +448,7 @@ export default function AnalyticsTab() {
                     </div>
                     <div className="text-right">
                       <span className="font-bold text-slate-900">{dev.percentage}%</span>
-                      <div className="text-[10px] text-slate-400">{dev.users.toLocaleString()} users</div>
+                      <div className="text-[10px] text-slate-400">{formatNumber(dev.users)} users</div>
                     </div>
                   </div>
                 );

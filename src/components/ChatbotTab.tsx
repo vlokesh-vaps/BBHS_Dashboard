@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { bbhsChatbotData } from '../data/bbhsData';
 import DonutChart from './charts/DonutChart';
+import { formatNumber } from '../utils/format';
 
 export default function ChatbotTab() {
   const [logSearch, setLogSearch] = useState('');
@@ -26,7 +27,7 @@ export default function ChatbotTab() {
     label: i.intent.split(' ')[0],
     percentage: i.percentage,
     color: i.color,
-    value: `${i.count.toLocaleString()} queries`,
+    value: `${formatNumber(i.count)} queries`,
   }));
 
   const filteredLogs = bbhsChatbotData.recentLogs.filter((log) => {
@@ -47,7 +48,7 @@ export default function ChatbotTab() {
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <div className="text-xs text-slate-500 font-medium">Total Conversations</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
-            {bbhsChatbotData.kpis.totalConversations.toLocaleString()}
+            {formatNumber(bbhsChatbotData.kpis.totalConversations)}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
@@ -93,7 +94,7 @@ export default function ChatbotTab() {
             <span className="text-xs text-slate-400 font-normal ml-0.5">/ 5.0</span>
           </div>
           <div className="mt-1 text-xs text-slate-500">
-            {bbhsChatbotData.kpis.totalRatings.toLocaleString()} parent ratings
+            {formatNumber(bbhsChatbotData.kpis.totalRatings)} parent ratings
           </div>
         </div>
 
@@ -119,7 +120,7 @@ export default function ChatbotTab() {
                   Parent Inquiries by Intent Category
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Topic classification across {bbhsChatbotData.kpis.totalConversations.toLocaleString()} total conversations
+                  Topic classification across {formatNumber(bbhsChatbotData.kpis.totalConversations)} total conversations
                 </p>
               </div>
               <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">

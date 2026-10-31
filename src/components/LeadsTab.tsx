@@ -28,6 +28,7 @@ import {
 import { bbhsLeadsData } from '../data/bbhsData';
 import { AdmissionLead, LeadStatus } from '../types/dashboard';
 import NewLeadModal from './NewLeadModal';
+import { formatNumber } from '../utils/format';
 
 export default function LeadsTab() {
   const [leadsList, setLeadsList] = useState<AdmissionLead[]>(bbhsLeadsData.leads);
@@ -390,7 +391,7 @@ export default function LeadsTab() {
               <div className="text-[11px] font-medium opacity-80 uppercase tracking-wider truncate">
                 {stage.label}
               </div>
-              <div className="text-xl font-black mt-1">{stage.count.toLocaleString()}</div>
+              <div className="text-xl font-black mt-1">{formatNumber(stage.count)}</div>
               <div className="text-[10px] mt-0.5 opacity-90">{stage.pct} conversion</div>
             </div>
           ))}

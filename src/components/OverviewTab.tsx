@@ -28,6 +28,7 @@ import {
   bbhsLeadsData,
   bbhsChatbotData,
 } from '../data/bbhsData';
+import { formatNumber } from '../utils/format';
 
 interface OverviewTabProps {
   setActiveTab: (tab: string) => void;
@@ -37,9 +38,9 @@ export default function OverviewTab({ setActiveTab }: OverviewTabProps) {
   const kpis = [
     {
       title: 'Website Monthly Users',
-      value: bbhsAnalyticsData.kpis.totalUsers.toLocaleString(),
+      value: formatNumber(bbhsAnalyticsData.kpis.totalUsers),
       change: `+${bbhsAnalyticsData.kpis.totalUsersChange}%`,
-      subtext: `${bbhsAnalyticsData.kpis.pageViews.toLocaleString()} pageviews`,
+      subtext: `${formatNumber(bbhsAnalyticsData.kpis.pageViews)} pageviews`,
       icon: Globe,
       color: 'from-blue-600 to-indigo-600',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
@@ -47,7 +48,7 @@ export default function OverviewTab({ setActiveTab }: OverviewTabProps) {
     },
     {
       title: 'Social Media Community',
-      value: bbhsSocialMediaData.kpis.totalFollowers.toLocaleString(),
+      value: formatNumber(bbhsSocialMediaData.kpis.totalFollowers),
       change: `+${bbhsSocialMediaData.kpis.netGrowthMoM}% MoM`,
       subtext: `${(bbhsSocialMediaData.kpis.totalImpressions / 1000000).toFixed(2)}M impressions`,
       icon: Share2,
@@ -57,7 +58,7 @@ export default function OverviewTab({ setActiveTab }: OverviewTabProps) {
     },
     {
       title: 'Admissions Inquiries (2026-27)',
-      value: bbhsLeadsData.funnelMetrics.totalInquiries.toLocaleString(),
+      value: formatNumber(bbhsLeadsData.funnelMetrics.totalInquiries),
       change: `${bbhsLeadsData.funnelMetrics.overallConversionRate}% Conv.`,
       subtext: `${bbhsLeadsData.funnelMetrics.enrolledStudents} confirmed enrolled`,
       icon: UserCheck,
@@ -69,7 +70,7 @@ export default function OverviewTab({ setActiveTab }: OverviewTabProps) {
       title: 'AI Chatbot Resolution Rate',
       value: `${bbhsChatbotData.kpis.botResolutionRate}%`,
       change: `${bbhsChatbotData.kpis.csatScore} / 5.0 CSAT`,
-      subtext: `${bbhsChatbotData.kpis.totalConversations.toLocaleString()} chats handled`,
+      subtext: `${formatNumber(bbhsChatbotData.kpis.totalConversations)} chats handled`,
       icon: MessageSquare,
       color: 'from-emerald-600 to-teal-600',
       badgeBg: 'bg-emerald-50 text-emerald-800 border-emerald-200',
