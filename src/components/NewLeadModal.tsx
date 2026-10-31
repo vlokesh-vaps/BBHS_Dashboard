@@ -20,7 +20,7 @@ export default function NewLeadModal({ isOpen, onClose, onAddLead }: NewLeadModa
     gradeApplied: 'Grade 1 (Primary)',
     priority: 'High' as LeadPriority,
     status: 'New Inquiry' as LeadStatus,
-    source: 'Website Form' as AdmissionLead['source'],
+    source: 'Website Lead' as AdmissionLead['source'],
     counselor: 'Mrs. Sharon D’Souza',
     boardPreference: 'ICSE' as AdmissionLead['boardPreference'],
     hostelRequired: false,
@@ -189,11 +189,13 @@ export default function NewLeadModal({ isOpen, onClose, onAddLead }: NewLeadModa
               <select
                 value={formData.source}
                 onChange={(e) => setFormData({ ...formData, source: e.target.value as any })}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-amber-500 text-xs bg-white"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-amber-500 text-xs bg-white font-medium"
               >
+                <option value="Website Lead">🌐 Website Lead (Portal / Form)</option>
+                <option value="WhatsApp Lead">💬 WhatsApp Lead (Helpline)</option>
+                <option value="AI Chat Lead">🤖 AI Chat Lead (Chatbot)</option>
                 <option value="Google Search">Google Search</option>
                 <option value="Alumni Referral">Alumni Referral</option>
-                <option value="Website Form">Website Form</option>
                 <option value="Instagram Ad">Instagram Ad</option>
                 <option value="Campus Walk-in">Campus Walk-in</option>
                 <option value="Education Fair">Education Fair</option>

@@ -165,6 +165,17 @@ export type LeadStatus =
 
 export type LeadPriority = 'High' | 'Medium' | 'Low' | 'Warm';
 
+export type LeadSource =
+  | 'Website Lead'
+  | 'WhatsApp Lead'
+  | 'AI Chat Lead'
+  | 'Website Form'
+  | 'Google Search'
+  | 'Instagram Ad'
+  | 'Campus Walk-in'
+  | 'Alumni Referral'
+  | 'Education Fair';
+
 export interface AdmissionLead {
   id: string;
   studentName: string;
@@ -175,7 +186,7 @@ export interface AdmissionLead {
   academicYear: string;
   status: LeadStatus;
   priority: LeadPriority;
-  source: 'Google Search' | 'Instagram Ad' | 'Website Form' | 'Campus Walk-in' | 'Alumni Referral' | 'Education Fair';
+  source: LeadSource;
   leadScore: number;
   counselor: string;
   dateCreated: string;

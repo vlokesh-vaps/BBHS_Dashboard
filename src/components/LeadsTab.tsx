@@ -20,6 +20,10 @@ import {
   ChevronRight,
   Sparkles,
   ArrowRight,
+  Globe,
+  MessageCircle,
+  Bot,
+  X,
 } from 'lucide-react';
 import { bbhsLeadsData } from '../data/bbhsData';
 import { AdmissionLead, LeadStatus } from '../types/dashboard';
@@ -31,6 +35,7 @@ export default function LeadsTab() {
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [gradeFilter, setGradeFilter] = useState<string>('all');
   const [priorityFilter, setPriorityFilter] = useState<string>('all');
+  const [sourceFilter, setSourceFilter] = useState<string>('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState<AdmissionLead | null>(null);
 
@@ -54,13 +59,18 @@ export default function LeadsTab() {
       lead.parentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       lead.phone.includes(searchTerm) ||
       lead.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lead.counselor.toLowerCase().includes(searchTerm.toLowerCase());
+      lead.counselor.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      lead.source.toLowerCase().includes(searchTerm.toLowerCase());
 
     const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
     const matchesGrade = gradeFilter === 'all' || lead.gradeApplied === gradeFilter;
     const matchesPriority = priorityFilter === 'all' || lead.priority === priorityFilter;
+    const matchesSource =
+      sourceFilter === 'all' ||
+      (sourceFilter === 'Website Lead' && (lead.source === 'Website Lead' || lead.source === 'Website Form')) ||
+      lead.source === sourceFilter;
 
-    return matchesSearch && matchesStatus && matchesGrade && matchesPriority;
+    return matchesSearch && matchesStatus && matchesGrade && matchesPriority && matchesSource;
   });
 
   const handleStatusChange = (id: string, newStatus: LeadStatus) => {
@@ -71,6 +81,54 @@ export default function LeadsTab() {
 
   const handleAddNewLead = (newLead: AdmissionLead) => {
     setLeadsList([newLead, ...leadsList]);
+  };
+
+  const getSourceBadge = (source: string) => {
+    switch (source) {
+      case 'Website Lead':
+      case 'Website Form':
+        return {
+          label: 'Website Lead',
+          badgeClass: 'bg-blue-50 text-blue-700 border-blue-200',
+          icon: Globe,
+          iconColor: 'text-blue-600',
+        };
+      case 'WhatsApp Lead':
+        return {
+          label: 'WhatsApp Lead',
+          badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-300 font-bold',
+          icon: MessageCircle,
+          iconColor: 'text-emerald-600',
+        };
+      case 'AI Chat Lead':
+        return {
+          label: 'AI Chat Lead',
+          badgeClass: 'bg-purple-50 text-purple-800 border-purple-300 font-bold',
+          icon: Bot,
+          iconColor: 'text-purple-600',
+        };
+      case 'Alumni Referral':
+        return {
+          label: 'Alumni Referral',
+          badgeClass: 'bg-teal-50 text-teal-700 border-teal-200',
+          icon: UserCheck,
+          iconColor: 'text-teal-600',
+        };
+      case 'Google Search':
+        return {
+          label: 'Google Search',
+          badgeClass: 'bg-sky-50 text-sky-700 border-sky-200',
+          icon: Search,
+          iconColor: 'text-sky-600',
+        };
+      default:
+        return {
+          label: source,
+          badgeClass: 'bg-slate-50 text-slate-700 border-slate-200',
+          icon: ArrowRight,
+          iconColor: 'text-slate-400',
+        };
+    }
   };
 
   const exportToCSV = () => {
@@ -157,6 +215,126 @@ export default function LeadsTab() {
 
   return (
     <div className="space-y-6">
+      {/* 3 Core Admissions Intake Channels: Website Lead, WhatsApp Lead, AI Chat Lead */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Website Lead Card */}
+        <div
+          onClick={() => setSourceFilter(sourceFilter === 'Website Lead' ? 'all' : 'Website Lead')}
+          className={`p-4 rounded-xl border transition-all cursor-pointer ${
+            sourceFilter === 'Website Lead'
+              ? 'bg-blue-50/90 border-blue-500 ring-2 ring-blue-400 shadow-md'
+              : 'bg-white border-slate-200 shadow-2xs hover:border-blue-400 hover:shadow-sm'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2.5">
+              <div className="p-2.5 rounded-xl bg-blue-600 text-white shadow-sm">
+                <Globe className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900 flex items-center space-x-1.5">
+                  <span>Website Leads</span>
+                  {sourceFilter === 'Website Lead' && (
+                    <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.2 rounded font-bold">Active</span>
+                  )}
+                </div>
+                <div className="text-[11px] text-slate-500">Admissions Portal &amp; Forms</div>
+              </div>
+            </div>
+            <span className="text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded-full border border-blue-200">
+              18.4% Conv.
+            </span>
+          </div>
+          <div className="mt-3 flex items-baseline justify-between">
+            <div>
+              <span className="text-2xl font-black text-slate-900">342</span>
+              <span className="text-xs text-slate-500 ml-1">inquiries (26.6%)</span>
+            </div>
+            <span className="text-[11px] text-blue-600 font-semibold hover:underline">
+              {sourceFilter === 'Website Lead' ? 'Clear Filter' : 'Filter Leads &rarr;'}
+            </span>
+          </div>
+        </div>
+
+        {/* WhatsApp Lead Card */}
+        <div
+          onClick={() => setSourceFilter(sourceFilter === 'WhatsApp Lead' ? 'all' : 'WhatsApp Lead')}
+          className={`p-4 rounded-xl border transition-all cursor-pointer ${
+            sourceFilter === 'WhatsApp Lead'
+              ? 'bg-emerald-50/90 border-emerald-500 ring-2 ring-emerald-400 shadow-md'
+              : 'bg-white border-slate-200 shadow-2xs hover:border-emerald-400 hover:shadow-sm'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2.5">
+              <div className="p-2.5 rounded-xl bg-emerald-600 text-white shadow-sm">
+                <MessageCircle className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900 flex items-center space-x-1.5">
+                  <span>WhatsApp Leads</span>
+                  {sourceFilter === 'WhatsApp Lead' && (
+                    <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-bold">Active</span>
+                  )}
+                </div>
+                <div className="text-[11px] text-slate-500">Helpline (+91 98450 18800)</div>
+              </div>
+            </div>
+            <span className="text-[11px] font-bold text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded-full border border-emerald-200">
+              22.6% Conv.
+            </span>
+          </div>
+          <div className="mt-3 flex items-baseline justify-between">
+            <div>
+              <span className="text-2xl font-black text-slate-900">288</span>
+              <span className="text-xs text-slate-500 ml-1">inquiries (22.4%)</span>
+            </div>
+            <span className="text-[11px] text-emerald-600 font-semibold hover:underline">
+              {sourceFilter === 'WhatsApp Lead' ? 'Clear Filter' : 'Filter Leads &rarr;'}
+            </span>
+          </div>
+        </div>
+
+        {/* AI Chat Lead Card */}
+        <div
+          onClick={() => setSourceFilter(sourceFilter === 'AI Chat Lead' ? 'all' : 'AI Chat Lead')}
+          className={`p-4 rounded-xl border transition-all cursor-pointer ${
+            sourceFilter === 'AI Chat Lead'
+              ? 'bg-purple-50/90 border-purple-500 ring-2 ring-purple-400 shadow-md'
+              : 'bg-white border-slate-200 shadow-2xs hover:border-purple-400 hover:shadow-sm'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2.5">
+              <div className="p-2.5 rounded-xl bg-purple-600 text-white shadow-sm">
+                <Bot className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900 flex items-center space-x-1.5">
+                  <span>AI Chat Leads</span>
+                  {sourceFilter === 'AI Chat Lead' && (
+                    <span className="text-[10px] bg-purple-600 text-white px-1.5 py-0.2 rounded font-bold">Active</span>
+                  )}
+                </div>
+                <div className="text-[11px] text-slate-500">24/7 Virtual Assistant Intake</div>
+              </div>
+            </div>
+            <span className="text-[11px] font-bold text-purple-700 bg-purple-100/70 px-2 py-0.5 rounded-full border border-purple-200">
+              19.5% Conv.
+            </span>
+          </div>
+          <div className="mt-3 flex items-baseline justify-between">
+            <div>
+              <span className="text-2xl font-black text-slate-900">246</span>
+              <span className="text-xs text-slate-500 ml-1">inquiries (19.2%)</span>
+            </div>
+            <span className="text-[11px] text-purple-600 font-semibold hover:underline">
+              {sourceFilter === 'AI Chat Lead' ? 'Clear Filter' : 'Filter Leads &rarr;'}
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Funnel Pipeline Overview */}
       <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
@@ -308,7 +486,7 @@ export default function LeadsTab() {
           </div>
 
           <div className="mt-4 p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-900">
-            <span className="font-bold">Alumni &amp; Word of Mouth</span> generates our highest conversion at 24.8%, reaffirming the 146-year community trust in Baldwin Boys.
+            <span className="font-bold">Digital Channels Lead:</span> Website (342), WhatsApp (288), and AI Chatbot (246) generate <span className="font-bold">68.2%</span> of all admissions inquiries for the 2026-27 session, with WhatsApp leading conversions at 22.6%.
           </div>
         </div>
       </div>
@@ -352,6 +530,32 @@ export default function LeadsTab() {
             </select>
 
             <select
+              value={sourceFilter}
+              onChange={(e) => setSourceFilter(e.target.value)}
+              className="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-1 focus:ring-amber-500 font-medium"
+            >
+              <option value="all">All Channels</option>
+              <option value="Website Lead">🌐 Website Leads</option>
+              <option value="WhatsApp Lead">💬 WhatsApp Leads</option>
+              <option value="AI Chat Lead">🤖 AI Chat Leads</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Alumni Referral">Alumni Referral</option>
+              <option value="Instagram Ad">Instagram Ads</option>
+              <option value="Campus Walk-in">Campus Walk-ins</option>
+            </select>
+
+            {sourceFilter !== 'all' && (
+              <button
+                onClick={() => setSourceFilter('all')}
+                className="flex items-center space-x-1 text-[11px] bg-amber-100 text-amber-900 px-2 py-1 rounded-lg border border-amber-300 font-medium hover:bg-amber-200 transition-colors"
+                title="Clear channel filter"
+              >
+                <span>Channel: {sourceFilter}</span>
+                <X className="w-3 h-3 ml-0.5" />
+              </button>
+            )}
+
+            <select
               value={priorityFilter}
               onChange={(e) => setPriorityFilter(e.target.value)}
               className="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white text-slate-700 focus:outline-none focus:ring-1 focus:ring-amber-500"
@@ -370,6 +574,7 @@ export default function LeadsTab() {
             <thead>
               <tr className="border-b border-slate-200 text-slate-500 uppercase font-semibold">
                 <th className="pb-3 pr-2">Student &amp; Parent</th>
+                <th className="pb-3 pr-2">Channel Source</th>
                 <th className="pb-3 pr-2">Class / Stream</th>
                 <th className="pb-3 pr-2">Board &amp; Hostel</th>
                 <th className="pb-3 pr-2">Lead Stage / Status</th>
@@ -394,6 +599,25 @@ export default function LeadsTab() {
                       <span>&bull;</span>
                       <span className="font-mono">{lead.id}</span>
                     </div>
+                  </td>
+
+                  {/* Channel Source */}
+                  <td className="py-3 pr-2">
+                    {(() => {
+                      const badge = getSourceBadge(lead.source);
+                      const IconComp = badge.icon;
+                      return (
+                        <button
+                          type="button"
+                          onClick={() => setSourceFilter(lead.source === 'Website Form' ? 'Website Lead' : lead.source)}
+                          className={`inline-flex items-center space-x-1 text-[11px] font-semibold px-2 py-0.5 rounded-md border hover:opacity-80 transition-opacity ${badge.badgeClass}`}
+                          title={`Click to filter by ${badge.label}`}
+                        >
+                          <IconComp className={`w-3 h-3 ${badge.iconColor}`} />
+                          <span>{badge.label}</span>
+                        </button>
+                      );
+                    })()}
                   </td>
 
                   {/* Class / Stream */}
@@ -486,9 +710,18 @@ export default function LeadsTab() {
                 <span className="text-slate-500">Contact:</span>{' '}
                 <span className="font-semibold text-slate-800">{selectedLead.phone} ({selectedLead.email})</span>
               </div>
-              <div>
-                <span className="text-slate-500">Source:</span>{' '}
-                <span className="font-semibold text-slate-800">{selectedLead.source}</span>
+              <div className="flex items-center space-x-2">
+                <span className="text-slate-500">Channel Source:</span>{' '}
+                {(() => {
+                  const badge = getSourceBadge(selectedLead.source);
+                  const IconComp = badge.icon;
+                  return (
+                    <span className={`inline-flex items-center space-x-1 text-[11px] font-semibold px-2 py-0.5 rounded-md border ${badge.badgeClass}`}>
+                      <IconComp className={`w-3 h-3 ${badge.iconColor}`} />
+                      <span>{badge.label}</span>
+                    </span>
+                  );
+                })()}
               </div>
               <div>
                 <span className="text-slate-500">Counselor Assigned:</span>{' '}

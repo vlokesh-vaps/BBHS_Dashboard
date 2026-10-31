@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { UserCheck, PieChart as PieChartIcon, ChevronRight, ArrowRight } from 'lucide-react';
+import { UserCheck, PieChart as PieChartIcon, ChevronRight, ArrowRight, Globe, MessageCircle, Bot } from 'lucide-react';
 import { bbhsLeadsData } from '../../data/bbhsData';
 import DonutChart from '../charts/DonutChart';
 
@@ -17,7 +17,7 @@ interface LeadsPanelProps {
  */
 export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
   const leadsSourcePie = bbhsLeadsData.sourceAttribution.map((s) => ({
-    label: s.source.split(' ')[0],
+    label: s.source.replace(' Leads', '').replace(' Organic', ''),
     percentage: Math.round((s.leads / bbhsLeadsData.funnelMetrics.totalInquiries) * 100),
     color: s.color,
     value: s.leads,
@@ -57,6 +57,51 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
             <span>Navigate</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
+        </div>
+
+        {/* Digital Intake Channels: Website, WhatsApp & AI Chat */}
+        <div className="grid grid-cols-3 gap-2 mt-4 p-2.5 bg-slate-50/80 rounded-xl border border-slate-200/80 text-xs">
+          <div
+            onClick={() => onNavigate('leads')}
+            className="flex items-center space-x-2 p-1.5 rounded-lg bg-white border border-slate-200/80 shadow-2xs hover:border-blue-400 cursor-pointer transition-all"
+            title="View Website Leads"
+          >
+            <div className="p-1 rounded-md bg-blue-50 text-blue-600">
+              <Globe className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-500 font-medium leading-none truncate">Website</div>
+              <div className="text-xs font-bold text-slate-900 mt-0.5">342 leads</div>
+            </div>
+          </div>
+
+          <div
+            onClick={() => onNavigate('leads')}
+            className="flex items-center space-x-2 p-1.5 rounded-lg bg-white border border-slate-200/80 shadow-2xs hover:border-emerald-400 cursor-pointer transition-all"
+            title="View WhatsApp Leads"
+          >
+            <div className="p-1 rounded-md bg-emerald-50 text-emerald-600">
+              <MessageCircle className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-500 font-medium leading-none truncate">WhatsApp</div>
+              <div className="text-xs font-bold text-slate-900 mt-0.5">288 leads</div>
+            </div>
+          </div>
+
+          <div
+            onClick={() => onNavigate('leads')}
+            className="flex items-center space-x-2 p-1.5 rounded-lg bg-white border border-slate-200/80 shadow-2xs hover:border-purple-400 cursor-pointer transition-all"
+            title="View AI Chat Leads"
+          >
+            <div className="p-1 rounded-md bg-purple-50 text-purple-600">
+              <Bot className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-500 font-medium leading-none truncate">AI Chat</div>
+              <div className="text-xs font-bold text-slate-900 mt-0.5">246 leads</div>
+            </div>
+          </div>
         </div>
 
         {/* Visual Graph 1: Conversion Funnel Progress Bars */}
@@ -105,13 +150,13 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
       {/* Card Footer with Call to Action */}
       <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
         <span className="text-xs text-slate-500">
-          154 Enrolled &bull; Alumni referral highest conversion (24.8%)
+          154 Enrolled &bull; Website, WhatsApp &amp; AI Chat power 68.2% of inquiries
         </span>
         <button
           onClick={() => onNavigate('leads')}
           className="text-xs font-bold text-amber-700 hover:text-amber-900 flex items-center space-x-1"
         >
-          <span>Open Applicant CRM</span>
+          <span>Open Admissions CRM</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>
