@@ -320,10 +320,7 @@ export default function ChatbotTab() {
               <tr className="border-b border-slate-200 text-slate-500 uppercase font-semibold">
                 <th className="pb-3 pr-2">User &amp; Session</th>
                 <th className="pb-3 pr-2">Parent Question &amp; Bot Reply</th>
-                <th className="pb-3 pr-2">Intent</th>
-                <th className="pb-3 pr-2">Confidence</th>
-                <th className="pb-3 pr-2">Resolution Status</th>
-                <th className="pb-3 text-right">CSAT</th>
+                <th className="pb-3 text-right">Topic</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -337,48 +334,20 @@ export default function ChatbotTab() {
                     </div>
                   </td>
 
-                  <td className="py-3 pr-2 max-w-md">
+                  <td className="py-3 pr-2 max-w-xl">
                     <div className="font-medium text-slate-900 leading-snug">
                       &quot;{log.question}&quot;
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-600 bg-slate-50 p-2 rounded border border-slate-100 leading-relaxed">
+                    <div className="mt-1 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-100 leading-relaxed">
                       <span className="font-bold text-amber-700">Baldwin AI: </span>
                       {log.botReply}
                     </div>
                   </td>
 
-                  <td className="py-3 pr-2 whitespace-nowrap">
+                  <td className="py-3 text-right whitespace-nowrap">
                     <span className="bg-blue-50 text-blue-700 text-[10px] font-semibold px-2 py-0.5 rounded border border-blue-200">
                       {log.intent}
                     </span>
-                  </td>
-
-                  <td className="py-3 pr-2 whitespace-nowrap">
-                    <span className="font-mono text-slate-700 font-bold">
-                      {Math.round(log.confidenceScore * 100)}%
-                    </span>
-                  </td>
-
-                  <td className="py-3 pr-2 whitespace-nowrap">
-                    <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
-                        log.resolutionStatus.includes('Resolved')
-                          ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                          : 'bg-amber-50 text-amber-800 border-amber-200'
-                      }`}
-                    >
-                      {log.resolutionStatus}
-                    </span>
-                  </td>
-
-                  <td className="py-3 text-right whitespace-nowrap">
-                    {log.rating ? (
-                      <span className="text-amber-500 font-bold">
-                        {'★'.repeat(log.rating)}
-                      </span>
-                    ) : (
-                      <span className="text-slate-400">-</span>
-                    )}
                   </td>
                 </tr>
               ))}
