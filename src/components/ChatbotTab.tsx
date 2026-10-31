@@ -9,7 +9,6 @@ import {
   TrendingUp,
   Clock,
   ThumbsUp,
-  AlertTriangle,
   UserCheck,
   CheckCircle,
   HelpCircle,
@@ -191,44 +190,88 @@ export default function ChatbotTab() {
         </div>
       </div>
 
-      {/* Unresolved Questions & AI Training Opportunities */}
+      {/* Common Parent Questions & Instant Answers (Simple & Understandable) */}
       <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
         <div className="flex items-center space-x-2 pb-3 border-b border-slate-100">
-          <AlertTriangle className="w-5 h-5 text-amber-500" />
+          <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+            <Bot className="w-5 h-5" />
+          </div>
           <div>
             <h3 className="text-base font-bold text-slate-900">
-              Unresolved Queries &amp; Knowledge Base Training Recommendations
+              Common Parent Questions &bull; Instant AI Answers
             </h3>
             <p className="text-xs text-slate-500">
-              Queries requiring manual admissions intervention or FAQ updates
+              How the AI assistant automatically answers parent questions 24/7 on admissions, fees, and school life
             </p>
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {bbhsChatbotData.unresolvedQueries.map((uq, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-xl border border-amber-200/80 bg-amber-50/50 flex flex-col justify-between text-xs"
-            >
-              <div>
-                <div className="flex items-center justify-between text-[11px] text-amber-800 font-bold mb-1">
-                  <span>Frequency: {uq.frequency} occurrences</span>
-                  <span className="bg-amber-200/60 px-1.5 py-0.2 rounded text-[10px]">
-                    Action Required
-                  </span>
-                </div>
-                <p className="font-semibold text-slate-900 leading-snug">
-                  &quot;{uq.query}&quot;
-                </p>
+        <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Card 1: Admissions & Age */}
+          <div className="p-4 rounded-xl border border-blue-200/80 bg-blue-50/40 flex flex-col justify-between text-xs space-y-3">
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[11px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full border border-blue-200">
+                  Admissions Criteria
+                </span>
+                <span className="text-[10px] text-emerald-600 font-semibold flex items-center">
+                  <CheckCircle className="w-3 h-3 mr-0.5" /> Instant (1.1s)
+                </span>
               </div>
-
-              <div className="mt-3 pt-2 border-t border-amber-200/60 text-[11px] text-slate-600">
-                <span className="font-bold text-slate-800">Recommendation:</span>{' '}
-                {uq.suggestedAction}
-              </div>
+              <p className="font-bold text-slate-900 text-xs">
+                &ldquo;What is the age cutoff for Nursery &amp; Grade 1 for 2026-27?&rdquo;
+              </p>
             </div>
-          ))}
+
+            <div className="p-3 bg-white rounded-lg border border-blue-100 text-[11px] text-slate-700 leading-relaxed shadow-2xs">
+              <span className="font-bold text-blue-800 block mb-0.5">AI Answer:</span>
+              Nursery boys must be 3+ years by June 1, 2026. Grade 1 requires 5.8+ years. Parents can apply online via the BBHS Admissions Portal or visit the campus office.
+            </div>
+          </div>
+
+          {/* Card 2: Fees & Installments */}
+          <div className="p-4 rounded-xl border border-amber-200/80 bg-amber-50/40 flex flex-col justify-between text-xs space-y-3">
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-200">
+                  Fees &amp; Payments
+                </span>
+                <span className="text-[10px] text-emerald-600 font-semibold flex items-center">
+                  <CheckCircle className="w-3 h-3 mr-0.5" /> Instant (1.2s)
+                </span>
+              </div>
+              <p className="font-bold text-slate-900 text-xs">
+                &ldquo;Can school fees be paid in term installments?&rdquo;
+              </p>
+            </div>
+
+            <div className="p-3 bg-white rounded-lg border border-amber-100 text-[11px] text-slate-700 leading-relaxed shadow-2xs">
+              <span className="font-bold text-amber-900 block mb-0.5">AI Answer:</span>
+              Yes, fees can be paid in 2 term installments (Term 1 by June, Term 2 by November) via Net Banking, UPI, and major cards through the parent portal.
+            </div>
+          </div>
+
+          {/* Card 3: School Bus & Routes */}
+          <div className="p-4 rounded-xl border border-emerald-200/80 bg-emerald-50/40 flex flex-col justify-between text-xs space-y-3">
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-200">
+                  Bus Routes &amp; Safety
+                </span>
+                <span className="text-[10px] text-emerald-600 font-semibold flex items-center">
+                  <CheckCircle className="w-3 h-3 mr-0.5" /> Instant (1.0s)
+                </span>
+              </div>
+              <p className="font-bold text-slate-900 text-xs">
+                &ldquo;Do school buses cover Indiranagar, Koramangala &amp; Whitefield?&rdquo;
+              </p>
+            </div>
+
+            <div className="p-3 bg-white rounded-lg border border-emerald-100 text-[11px] text-slate-700 leading-relaxed shadow-2xs">
+              <span className="font-bold text-emerald-900 block mb-0.5">AI Answer:</span>
+              Yes! BBHS operates 28 GPS-tracked school buses with speed governors and female attendants covering all major Bangalore routes with live parent tracking.
+            </div>
+          </div>
         </div>
       </div>
 
@@ -237,10 +280,10 @@ export default function ChatbotTab() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
           <div>
             <h3 className="text-base font-bold text-slate-900">
-              Audit &amp; Conversation Logs Feed
+              Recent Parent Questions &amp; Live AI Answers
             </h3>
             <p className="text-xs text-slate-500">
-              Showing real-time automated transcripts and escalation tickets
+              Real-time questions asked by parents on the school website and WhatsApp
             </p>
           </div>
 
