@@ -7,7 +7,6 @@ import AnalyticsPanel from './hub/AnalyticsPanel';
 import SocialPanel from './hub/SocialPanel';
 import LeadsPanel from './hub/LeadsPanel';
 import ChatbotPanel from './hub/ChatbotPanel';
-import HousesSection from './hub/HousesSection';
 
 interface HubViewProps {
   onNavigate: (tabId: string) => void;
@@ -18,7 +17,6 @@ interface HubViewProps {
  * Composed of clean, modular subcomponents:
  * - KpiSummaryRow: Top-line metrics for quick assessment
  * - Visual Panels: Interactive cards with SVG graphs & pie charts
- * - HousesSection: Annual merit shield standings
  */
 export default function HubView({ onNavigate }: HubViewProps) {
   return (
@@ -33,9 +31,6 @@ export default function HubView({ onNavigate }: HubViewProps) {
         <LeadsPanel onNavigate={onNavigate} />
         <ChatbotPanel onNavigate={onNavigate} />
       </div>
-
-      {/* 3. Bottom Row: Four Historic Houses Standings */}
-      <HousesSection />
     </div>
   );
 }
