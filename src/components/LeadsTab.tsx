@@ -341,10 +341,10 @@ export default function LeadsTab() {
           <div>
             <h2 className="text-base sm:text-lg font-bold text-slate-900 flex items-center space-x-2">
               <UserCheck className="w-5 h-5 text-amber-500" />
-              <span>Admissions Conversion Funnel &bull; Academic Year 2026-27</span>
+              <span>Admissions Steps &amp; Seat Progress &bull; Academic Year 2026-27</span>
             </h2>
             <p className="text-xs text-slate-500">
-              Progression from initial inquiry on website to confirmed student registration
+              Progression from first family inquiry to confirmed boy enrollment at Baldwin Boys&apos; High School
             </p>
           </div>
 
@@ -354,16 +354,16 @@ export default function LeadsTab() {
               className="bg-[#0B192C] hover:bg-[#1E3E62] text-amber-300 hover:text-white px-3.5 py-2 rounded-lg text-xs font-bold transition-colors flex items-center space-x-1.5 shadow-sm"
             >
               <UserPlus className="w-4 h-4" />
-              <span>Add Prospective Lead</span>
+              <span>+ Register New Applicant</span>
             </button>
 
             <button
               onClick={exportToCSV}
               className="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors flex items-center space-x-1.5 border border-slate-200"
-              title="Download CSV Spreadsheet"
+              title="Download Excel / CSV Spreadsheet for School Office"
             >
               <Download className="w-4 h-4" />
-              <span>Export CSV</span>
+              <span>Download Excel / CSV</span>
             </button>
           </div>
         </div>
@@ -670,12 +670,31 @@ export default function LeadsTab() {
 
                   {/* Actions */}
                   <td className="py-3 text-right">
-                    <button
-                      onClick={() => setSelectedLead(lead)}
-                      className="px-2.5 py-1 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded font-medium text-[11px] transition-colors"
-                    >
-                      View Notes
-                    </button>
+                    <div className="flex items-center justify-end space-x-1.5">
+                      <a
+                        href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-lg border border-emerald-200 transition-colors"
+                        title="Chat on WhatsApp with Parent"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5" />
+                      </a>
+                      <a
+                        href={`tel:${lead.phone}`}
+                        className="p-1.5 text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors"
+                        title="Call Parent on Phone"
+                      >
+                        <Phone className="w-3.5 h-3.5" />
+                      </a>
+                      <button
+                        onClick={() => setSelectedLead(lead)}
+                        className="px-2.5 py-1 text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-[11px] transition-colors border border-slate-200"
+                        title="View Counselor Notes"
+                      >
+                        Notes
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -733,10 +752,29 @@ export default function LeadsTab() {
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 flex justify-end">
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div className="flex items-center space-x-2">
+                <a
+                  href={`https://wa.me/${selectedLead.phone.replace(/[^0-9]/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition-colors flex items-center space-x-1"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp Parent</span>
+                </a>
+                <a
+                  href={`tel:${selectedLead.phone}`}
+                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition-colors flex items-center space-x-1"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Call Parent</span>
+                </a>
+              </div>
+
               <button
                 onClick={() => setSelectedLead(null)}
-                className="px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800"
+                className="px-4 py-1.5 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800"
               >
                 Close
               </button>

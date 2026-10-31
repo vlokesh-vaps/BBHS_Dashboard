@@ -56,12 +56,12 @@ export default function SocialMediaTab() {
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsSocialMediaData.kpis.netGrowthMoM}% MoM
+            +{bbhsSocialMediaData.kpis.netGrowthMoM}% this month
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Total Impressions</div>
+          <div className="text-xs text-slate-500 font-medium">Post Views (Impressions)</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {(bbhsSocialMediaData.kpis.totalImpressions / 1000000).toFixed(2)}M
           </div>
@@ -71,7 +71,7 @@ export default function SocialMediaTab() {
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Avg. Engagement</div>
+          <div className="text-xs text-slate-500 font-medium">Parent Interaction Rate</div>
           <div className="mt-1 text-xl font-bold text-pink-600">
             {bbhsSocialMediaData.kpis.avgEngagementRate}%
           </div>
@@ -81,7 +81,7 @@ export default function SocialMediaTab() {
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Video / Reel Views</div>
+          <div className="text-xs text-slate-500 font-medium">Video &amp; Reel Plays</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsSocialMediaData.kpis.totalVideoViews.toLocaleString()}
           </div>
@@ -101,12 +101,12 @@ export default function SocialMediaTab() {
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Audience Sentiment</div>
+          <div className="text-xs text-slate-500 font-medium">Parent &amp; Alumni Feedback</div>
           <div className="mt-1 text-xl font-bold text-emerald-600">
             94.6%
           </div>
           <div className="mt-1 text-xs text-slate-500">
-            Positive Alumni/Parents
+            Positive sentiment &amp; school pride
           </div>
         </div>
       </div>

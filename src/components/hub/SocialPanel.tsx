@@ -34,7 +34,7 @@ export default function SocialPanel({ onNavigate }: SocialPanelProps) {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                Social Media &bull; Growth &amp; Engagement
+                School Social Media &bull; Community &amp; Outreach
               </h3>
               <p className="text-xs text-slate-500">
                 Instagram, Facebook, YouTube, and LinkedIn
@@ -46,7 +46,7 @@ export default function SocialPanel({ onNavigate }: SocialPanelProps) {
             onClick={() => onNavigate('social')}
             className="text-xs font-bold text-rose-600 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 px-3 py-1.5 rounded-lg border border-rose-200 transition-colors flex items-center space-x-1"
           >
-            <span>Navigate</span>
+            <span>View Social</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -56,9 +56,9 @@ export default function SocialPanel({ onNavigate }: SocialPanelProps) {
           <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
             <span className="flex items-center space-x-1.5">
               <PieChartIcon className="w-3.5 h-3.5 text-pink-600" />
-              <span>Audience by Platform (Donut / Pie)</span>
+              <span>Followers by Channel (49,540 Total Families &amp; Alumni)</span>
             </span>
-            <span className="text-xs font-bold text-slate-800">49,540 Total</span>
+            <span className="text-xs font-bold text-slate-800">4 Platforms</span>
           </div>
 
           <div className="p-3 bg-slate-50/70 rounded-xl border border-slate-100">
@@ -77,7 +77,7 @@ export default function SocialPanel({ onNavigate }: SocialPanelProps) {
           <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
             <span className="flex items-center space-x-1.5">
               <BarChart3 className="w-3.5 h-3.5 text-rose-600" />
-              <span>Weekly Interaction Activity (Mon &rarr; Sun)</span>
+              <span>Parent &amp; Student Activity by Day (Mon &rarr; Sun)</span>
             </span>
             <span className="text-xs text-rose-600 font-bold">Peak: Weekends</span>
           </div>
@@ -104,13 +104,13 @@ export default function SocialPanel({ onNavigate }: SocialPanelProps) {
       {/* Card Footer with Call to Action */}
       <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
         <span className="text-xs text-slate-500">
-          6.1% Engagement Rate &bull; 1.34M Monthly Impressions
+          1.34M Post Views this month &bull; 6.1% Parent Interaction Rate
         </span>
         <button
           onClick={() => onNavigate('social')}
           className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center space-x-1"
         >
-          <span>Explore Social Campaigns</span>
+          <span>View Social Posts &amp; Content</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>

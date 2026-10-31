@@ -42,10 +42,10 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                Admissions Leads &bull; CRM Pipeline
+                Admissions Inquiries &amp; Enrollment
               </h3>
               <p className="text-xs text-slate-500">
-                Academic Session 2026-27 (Nursery &rarr; Class 11 ISC)
+                Academic Year 2026-27 (Nursery &rarr; Class 11 ISC)
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
             onClick={() => onNavigate('leads')}
             className="text-xs font-bold text-amber-800 hover:text-amber-950 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-lg border border-amber-300 transition-colors flex items-center space-x-1"
           >
-            <span>Navigate</span>
+            <span>View Admissions</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -107,7 +107,7 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
         {/* Visual Graph 1: Conversion Funnel Progress Bars */}
         <div className="mt-5 space-y-2">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
-            <span>Admissions Funnel Progression</span>
+            <span>Admissions Steps (Inquiry &rarr; Enrolled)</span>
             <span className="text-amber-700 font-bold">12.0% Overall Conv.</span>
           </div>
 
@@ -132,7 +132,7 @@ export default function LeadsPanel({ onNavigate }: LeadsPanelProps) {
           <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
             <span className="flex items-center space-x-1.5">
               <PieChartIcon className="w-3.5 h-3.5 text-amber-600" />
-              <span>Lead Source Attribution (Pie / Donut)</span>
+              <span>Where Inquiries Arrive From (Pie / Donut)</span>
             </span>
             <span className="text-xs text-slate-400">1,284 Leads</span>
           </div>

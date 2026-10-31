@@ -43,13 +43,13 @@ export default function AnalyticsTab() {
             </span>
             <div>
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <span>Google Analytics 4 &bull; Web Intelligence</span>
+                <span>School Website Traffic &bull; Parent Visitors</span>
                 <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-300">
-                  GA4 Property: G-BBHS1880
+                  Live Official Website
                 </span>
               </h2>
               <p className="text-xs text-slate-500">
-                Tracking domain:{' '}
+                Official School Portal:{' '}
                 <a
                   href={bbhsSchoolProfile.liveWebsiteUrl}
                   target="_blank"
@@ -71,73 +71,73 @@ export default function AnalyticsTab() {
             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
           </span>
           <div>
-            <div className="text-[11px] text-slate-400 font-medium">Real-Time Active Visitors</div>
+            <div className="text-[11px] text-slate-400 font-medium">Currently On School Site</div>
             <div className="text-xl font-extrabold text-white leading-tight">
               {bbhsAnalyticsData.liveActiveUsers}{' '}
-              <span className="text-xs font-normal text-slate-400">on site now</span>
+              <span className="text-xs font-normal text-slate-400">active parents now</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* KPI Cards Row */}
+      {/* KPI Cards Row (Plain English) */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Total Users</div>
+          <div className="text-xs text-slate-500 font-medium">Total Visitors</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsAnalyticsData.kpis.totalUsers.toLocaleString()}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsAnalyticsData.kpis.totalUsersChange}%
+            +{bbhsAnalyticsData.kpis.totalUsersChange}% vs last month
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">New Visitors</div>
+          <div className="text-xs text-slate-500 font-medium">New Prospective Parents</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsAnalyticsData.kpis.newUsers.toLocaleString()}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsAnalyticsData.kpis.newUsersChange}%
+            +{bbhsAnalyticsData.kpis.newUsersChange}% first-time
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Sessions</div>
+          <div className="text-xs text-slate-500 font-medium">Total Site Visits</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsAnalyticsData.kpis.sessions.toLocaleString()}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsAnalyticsData.kpis.sessionsChange}%
+            +{bbhsAnalyticsData.kpis.sessionsChange}% growth
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Page Views</div>
+          <div className="text-xs text-slate-500 font-medium">School Pages Read</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsAnalyticsData.kpis.pageViews.toLocaleString()}
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsAnalyticsData.kpis.pageViewsChange}%
+            +{bbhsAnalyticsData.kpis.pageViewsChange}% pageviews
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Avg. Engagement</div>
+          <div className="text-xs text-slate-500 font-medium">Avg. Reading Time</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsAnalyticsData.kpis.avgSessionDuration}
           </div>
           <div className="mt-1 text-xs text-slate-400 font-medium">
-            34.2% Bounce Rate
+            High interest engagement
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Inquiry Conversion</div>
+          <div className="text-xs text-slate-500 font-medium">Admission Form Rate</div>
           <div className="mt-1 text-xl font-bold text-amber-600">
             {bbhsAnalyticsData.kpis.inquiryConversionRate}%
           </div>
@@ -169,7 +169,7 @@ export default function AnalyticsTab() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Pageviews
+              Pages Read
             </button>
             <button
               onClick={() => setSelectedMetric('sessions')}
@@ -179,7 +179,7 @@ export default function AnalyticsTab() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Sessions
+              Total Visits
             </button>
             <button
               onClick={() => setSelectedMetric('uniqueUsers')}
@@ -189,7 +189,7 @@ export default function AnalyticsTab() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Unique Users
+              Individual Families
             </button>
           </div>
         </div>

@@ -34,10 +34,10 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                AI Chatbot &bull; Admissions Telemetry
+                24/7 AI Parent Assistant &bull; School Helpdesk
               </h3>
               <p className="text-xs text-slate-500">
-                18,420 automated parent &amp; student conversations
+                18,420 automated answers to parent &amp; student questions
               </p>
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
             onClick={() => onNavigate('chatbot')}
             className="text-xs font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-300 transition-colors flex items-center space-x-1"
           >
-            <span>Navigate</span>
+            <span>View Helpdesk</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -56,9 +56,9 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
           <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
             <span className="flex items-center space-x-1.5">
               <PieChartIcon className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Parent Question Intents (Pie / Donut)</span>
+              <span>What Parents Ask About Most (Fees, Admissions, Hostel)</span>
             </span>
-            <span className="text-xs font-bold text-emerald-700">91.4% Bot Resolved</span>
+            <span className="text-xs font-bold text-emerald-700">91.4% Solved Automatically</span>
           </div>
 
           <div className="p-3 bg-slate-50/70 rounded-xl border border-slate-100">
@@ -67,7 +67,7 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
               size={120}
               strokeWidth={22}
               centerValue="91.4%"
-              centerLabel="Resolved"
+              centerLabel="Answered"
             />
           </div>
         </div>
@@ -77,9 +77,9 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
           <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
             <span className="flex items-center space-x-1.5">
               <BarChart3 className="w-3.5 h-3.5 text-emerald-600" />
-              <span>24-Hour Inquiry Load (Peak Evening 7-10 PM)</span>
+              <span>Parent Inquiry Time of Day (Busiest 7 PM – 10 PM)</span>
             </span>
-            <span className="text-xs text-slate-400">1.2s avg response</span>
+            <span className="text-xs text-slate-400">Instant 1.2s replies</span>
           </div>
 
           <div className="h-16 flex items-end space-x-2 pt-1 pb-1">
@@ -106,13 +106,13 @@ export default function ChatbotPanel({ onNavigate }: ChatbotPanelProps) {
       {/* Card Footer with Call to Action */}
       <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
         <span className="text-xs text-slate-500">
-          91.4% automated resolution rate &bull; CSAT 4.86 / 5.0
+          91.4% answered automatically &bull; ★ 4.86 / 5.0 Parent Satisfaction
         </span>
         <button
           onClick={() => onNavigate('chatbot')}
           className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center space-x-1"
         >
-          <span>Explore Chatbot Telemetry</span>
+          <span>View Parent Chat History</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>

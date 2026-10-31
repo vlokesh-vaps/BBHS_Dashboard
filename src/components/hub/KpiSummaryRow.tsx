@@ -38,10 +38,10 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsAnalyticsData.kpis.totalUsersChange}%
+            +{bbhsAnalyticsData.kpis.totalUsersChange}% vs last month
           </span>
           <span className="text-blue-600 font-bold group-hover:underline flex items-center text-[11px]">
-            Open Analytics &rarr;
+            View Traffic &rarr;
           </span>
         </div>
       </div>
@@ -52,7 +52,7 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
         className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:shadow-md hover:border-rose-400 transition-all cursor-pointer group"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold text-slate-500 uppercase">Social Reach</span>
+          <span className="text-xs font-semibold text-slate-500 uppercase">Social Followers</span>
           <div className="p-2 rounded-lg bg-rose-50 text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-colors">
             <Share2 className="w-4 h-4" />
           </div>
@@ -63,10 +63,10 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="text-emerald-600 font-semibold flex items-center">
             <TrendingUp className="w-3 h-3 mr-0.5" />
-            +{bbhsSocialMediaData.kpis.netGrowthMoM}% MoM
+            +{bbhsSocialMediaData.kpis.netGrowthMoM}% monthly growth
           </span>
           <span className="text-rose-600 font-bold group-hover:underline flex items-center text-[11px]">
-            Open Social &rarr;
+            View Social &rarr;
           </span>
         </div>
       </div>
@@ -86,11 +86,11 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
           {bbhsLeadsData.funnelMetrics.totalInquiries.toLocaleString()}
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
-          <span className="text-amber-700 font-semibold">
-            {bbhsLeadsData.funnelMetrics.enrolledStudents} Enrolled
+          <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+            {bbhsLeadsData.funnelMetrics.enrolledStudents} Boys Enrolled
           </span>
           <span className="text-amber-600 font-bold group-hover:underline flex items-center text-[11px]">
-            Open Leads CRM &rarr;
+            View Admissions &rarr;
           </span>
         </div>
       </div>
@@ -101,7 +101,7 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
         className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:shadow-md hover:border-emerald-400 transition-all cursor-pointer group"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold text-slate-500 uppercase">AI Bot Resolution</span>
+          <span className="text-xs font-semibold text-slate-500 uppercase">AI Parent Helpdesk</span>
           <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
             <MessageSquare className="w-4 h-4" />
           </div>
@@ -111,10 +111,10 @@ export default function KpiSummaryRow({ onNavigate }: KpiSummaryRowProps) {
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="text-emerald-600 font-semibold">
-            ★ {bbhsChatbotData.kpis.csatScore} / 5.0
+            ★ {bbhsChatbotData.kpis.csatScore}/5.0 Parent Rating
           </span>
           <span className="text-emerald-600 font-bold group-hover:underline flex items-center text-[11px]">
-            Open Chatbot &rarr;
+            View Helpdesk &rarr;
           </span>
         </div>
       </div>

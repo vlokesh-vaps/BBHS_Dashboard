@@ -29,10 +29,10 @@ export default function DashboardPage() {
 
   const handleRefresh = () => {
     setIsRefreshing(true);
-    setToastMessage('Refreshing live telemetry from Google Analytics, Meta API, and Admissions CRM...');
+    setToastMessage('Updating website visits, social posts, and admission inquiries...');
     setTimeout(() => {
       setIsRefreshing(false);
-      setToastMessage('Data feeds synchronized successfully.');
+      setToastMessage('All school reports are now up to date.');
       setTimeout(() => setToastMessage(null), 3000);
     }, 900);
   };
@@ -41,29 +41,29 @@ export default function DashboardPage() {
     switch (activeTab) {
       case 'analytics':
         return {
-          title: 'Google Analytics 4 Intelligence',
-          desc: 'Real-time & 30-day website traffic, acquisition channels, and search keywords',
+          title: 'School Website Visitors & Traffic',
+          desc: 'See how prospective parents and alumni visit the school portal and discover Baldwin',
           icon: Globe,
           color: 'text-blue-600',
         };
       case 'social':
         return {
-          title: 'Social Media Command Center',
-          desc: 'Multi-platform engagement, impressions, viral reels, and community growth',
+          title: 'Social Media & Community Reach',
+          desc: 'Instagram, Facebook, YouTube, and LinkedIn growth, student highlights & event posts',
           icon: Share2,
           color: 'text-rose-600',
         };
       case 'leads':
         return {
-          title: 'Admissions CRM & Student Leads Pipeline',
-          desc: 'Prospective applicant tracking, conversion funnel, and grade capacity',
+          title: 'Admissions & Prospective Student Inquiries',
+          desc: 'Track families from first inquiry on Website, WhatsApp, and AI Chat through to enrolled boys',
           icon: UserCheck,
           color: 'text-amber-600',
         };
       case 'chatbot':
         return {
-          title: 'AI Admissions Chatbot Telemetry',
-          desc: 'Automated parent inquiries, topic intent classification, and resolution audit',
+          title: '24/7 AI Parent Helpdesk & Inquiries',
+          desc: 'Automatic instant answers for parent questions on admissions, school fees, and facilities',
           icon: MessageSquare,
           color: 'text-emerald-600',
         };
@@ -106,7 +106,7 @@ export default function DashboardPage() {
                 title="Return to the Main Directory"
               >
                 <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" />
-                <span>Command Hub</span>
+                <span>School Overview</span>
               </button>
 
               <div className="h-4 w-px bg-slate-200 hidden sm:block" />
@@ -114,7 +114,7 @@ export default function DashboardPage() {
               <div>
                 <div className="flex items-center space-x-1.5 text-xs text-slate-400">
                   <span className="cursor-pointer hover:underline" onClick={() => setActiveTab('hub')}>
-                    Command Hub
+                    Overview
                   </span>
                   <ChevronRight className="w-3 h-3 text-slate-400" />
                   <span className="font-semibold text-slate-700">{currentMeta.title}</span>
@@ -122,25 +122,25 @@ export default function DashboardPage() {
                 <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">
                   {currentMeta.title}
                 </h2>
+                <p className="text-xs text-slate-500 hidden sm:block mt-0.5">{currentMeta.desc}</p>
               </div>
             </div>
 
             {/* Quick Switcher Buttons */}
             <div className="flex items-center space-x-1.5 overflow-x-auto text-xs">
               {[
-                { id: 'analytics', label: 'Analytics' },
+                { id: 'analytics', label: 'Website' },
                 { id: 'social', label: 'Social' },
-                { id: 'leads', label: 'Leads CRM' },
-                { id: 'chatbot', label: 'Chatbot' },
+                { id: 'leads', label: 'Admissions' },
+                { id: 'chatbot', label: 'AI Helpdesk' },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`px-2.5 py-1 rounded-md font-semibold transition-all whitespace-nowrap ${
-                    activeTab === item.id
+                  className={`px-2.5 py-1 rounded-md font-semibold transition-all whitespace-nowrap ${activeTab === item.id
                       ? 'bg-[#0B192C] text-amber-300'
                       : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </button>

@@ -57,54 +57,54 @@ export default function ChatbotTab() {
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Bot Resolution Rate</div>
+          <div className="text-xs text-slate-500 font-medium">Automatic Answers</div>
           <div className="mt-1 text-xl font-bold text-emerald-600">
             {bbhsChatbotData.kpis.botResolutionRate}%
           </div>
           <div className="mt-1 text-xs text-slate-500">
-            Resolved without human
+            Solved without school staff
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Avg. Response Time</div>
+          <div className="text-xs text-slate-500 font-medium">Answer Speed</div>
           <div className="mt-1 text-xl font-bold text-slate-900">
             {bbhsChatbotData.kpis.avgResponseTimeSec}s
           </div>
           <div className="mt-1 text-xs text-emerald-600 font-semibold">
-            Sub-second latency
+            Instant 1.2s reply
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Escalation to Desk</div>
+          <div className="text-xs text-slate-500 font-medium">Transferred to Office</div>
           <div className="mt-1 text-xl font-bold text-amber-600">
             {bbhsChatbotData.kpis.escalationRate}%
           </div>
           <div className="mt-1 text-xs text-slate-500">
-            Sent to Admissions Office
+            Sent to Admissions Staff
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">Parent CSAT Rating</div>
+          <div className="text-xs text-slate-500 font-medium">Parent Satisfaction</div>
           <div className="mt-1 text-xl font-bold text-slate-900 flex items-center">
             <span>{bbhsChatbotData.kpis.csatScore}</span>
             <span className="text-xs text-amber-500 ml-1">★</span>
             <span className="text-xs text-slate-400 font-normal ml-0.5">/ 5.0</span>
           </div>
           <div className="mt-1 text-xs text-slate-500">
-            {bbhsChatbotData.kpis.totalRatings.toLocaleString()} feedback reviews
+            {bbhsChatbotData.kpis.totalRatings.toLocaleString()} parent ratings
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-          <div className="text-xs text-slate-500 font-medium">AI Model Health</div>
+          <div className="text-xs text-slate-500 font-medium">System Uptime</div>
           <div className="mt-1 text-xl font-bold text-emerald-600">
             99.9%
           </div>
           <div className="mt-1 text-xs text-slate-500">
-            BBHS Knowledge Base
+            Online 24 Hours / Day
           </div>
         </div>
       </div>

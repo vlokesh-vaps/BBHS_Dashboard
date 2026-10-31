@@ -5,6 +5,11 @@ import React from 'react';
 import {
   Calendar,
   RefreshCw,
+  LayoutDashboard,
+  Globe,
+  Share2,
+  UserCheck,
+  MessageSquare,
 } from 'lucide-react';
 import { bbhsSchoolProfile } from '../data/bbhsData';
 
@@ -95,6 +100,49 @@ export default function Header({
               <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin text-amber-400' : ''}`} />
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Non-IT Friendly Primary Navigation Bar (One-Click Direct Access) */}
+      <div className="bg-[#0f243e] border-t border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex space-x-1 sm:space-x-2 overflow-x-auto py-2 text-xs scrollbar-none" aria-label="Tabs">
+            {[
+              { id: 'hub', label: 'School Overview', icon: LayoutDashboard },
+              { id: 'analytics', label: 'Website Visitors', icon: Globe },
+              { id: 'social', label: 'Social Media', icon: Share2 },
+              { id: 'leads', label: 'Admissions & Inquiries', icon: UserCheck, badge: '154 Enrolled' },
+              { id: 'chatbot', label: 'AI Parent Helpdesk', icon: MessageSquare },
+            ].map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg font-semibold transition-all whitespace-nowrap cursor-pointer ${
+                    isActive
+                      ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} />
+                  <span>{tab.label}</span>
+                  {tab.badge && (
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1 ${
+                        isActive
+                          ? 'bg-slate-950 text-amber-300'
+                          : 'bg-emerald-900/60 text-emerald-300 border border-emerald-700/50'
+                      }`}
+                    >
+                      {tab.badge}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </nav>
         </div>
       </div>
     </header>
